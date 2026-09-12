@@ -1,0 +1,13 @@
+{
+    "name": "payzum/tutor-lms-payzum",
+    "description": "Payzum (crypto & stablecoin, non-custodial) payment method for Tutor LMS",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1",
+        "payzum/payzum-php": "^0.1"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
