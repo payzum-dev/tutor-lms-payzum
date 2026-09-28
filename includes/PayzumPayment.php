@@ -95,7 +95,7 @@ class PayzumPayment extends BasePayment {
 		} catch ( PayzumException $e ) {
 			// Tutor's checkout catches and shows the message to the buyer.
 			throw new \Exception(
-				esc_html__( 'Unable to start the crypto payment. Please try again or pick another payment method.', 'payzum-tutor-lms' )
+				esc_html__( 'Unable to start the crypto payment. Please try again or pick another payment method.', 'payzum-for-tutor-lms' )
 			);
 		}
 
@@ -104,7 +104,7 @@ class PayzumPayment extends BasePayment {
 			// invoice_url is null when the gateway has no checkout base
 			// configured for the merchant.
 			throw new \Exception(
-				esc_html__( 'The payment provider did not return a checkout URL. Please try again later.', 'payzum-tutor-lms' )
+				esc_html__( 'The payment provider did not return a checkout URL. Please try again later.', 'payzum-for-tutor-lms' )
 			);
 		}
 
@@ -323,7 +323,8 @@ class PayzumPayment extends BasePayment {
 		$table  = $wpdb->prefix . 'tutor_ordermeta';
 
 		$exists = $wpdb->get_var( $wpdb->prepare(
-			"SELECT id FROM {$table} WHERE order_id = %d AND meta_key = %s ORDER BY id DESC LIMIT 1",
+			'SELECT id FROM %i WHERE order_id = %d AND meta_key = %s ORDER BY id DESC LIMIT 1',
+			$table,
 			$order_id,
 			self::EVENT_IDS_META
 		) );

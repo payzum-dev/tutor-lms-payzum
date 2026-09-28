@@ -4,14 +4,14 @@
  * Plugin URI: https://github.com/payzum-dev/tutor-lms-payzum
  * Description: Accept crypto & stablecoin payments (USDC, USDT and more, multi-chain) for Tutor LMS course orders through Payzum — non-custodial, funds settle directly to your own wallet.
  * Version: 1.0.0
- * Requires at least: 6.0
+ * Requires at least: 6.2
  * Requires PHP: 8.1
  * Requires Plugins: tutor
  * Author: Payzum
  * Author URI: https://payzum.com
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
- * Text Domain: payzum-tutor-lms
+ * Text Domain: payzum-for-tutor-lms
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,7 +30,7 @@ add_action( 'plugins_loaded', function () {
 	if ( ! function_exists( 'tutor' ) || ! class_exists( \Tutor\PaymentGateways\GatewayBase::class ) ) {
 		add_action( 'admin_notices', function () {
 			echo '<div class="notice notice-error"><p>';
-			echo esc_html__( 'Payzum for Tutor LMS requires Tutor LMS 3.0 or newer (the version that ships native ecommerce).', 'payzum-tutor-lms' );
+			echo esc_html__( 'Payzum for Tutor LMS requires Tutor LMS 3.0 or newer (the version that ships native ecommerce).', 'payzum-for-tutor-lms' );
 			echo '</p></div>';
 		} );
 		return;
@@ -55,7 +55,7 @@ add_action( 'plugins_loaded', function () {
 	} );
 
 	add_filter( 'tutor_payment_method_labels', function ( $labels ) {
-		$labels['payzum'] = __( 'Crypto / stablecoin (Payzum)', 'payzum-tutor-lms' );
+		$labels['payzum'] = __( 'Crypto / stablecoin (Payzum)', 'payzum-for-tutor-lms' );
 		return $labels;
 	} );
 
@@ -73,30 +73,30 @@ add_action( 'plugins_loaded', function () {
 			'fields'               => array(
 				array(
 					'name'    => 'environment',
-					'label'   => __( 'Environment', 'payzum-tutor-lms' ),
+					'label'   => __( 'Environment', 'payzum-for-tutor-lms' ),
 					'type'    => 'select',
 					'options' => array(
-						'test' => __( 'Test (staging.payzum.com, separate API keys)', 'payzum-tutor-lms' ),
-						'live' => __( 'Live', 'payzum-tutor-lms' ),
+						'test' => __( 'Test (staging.payzum.com, separate API keys)', 'payzum-for-tutor-lms' ),
+						'live' => __( 'Live', 'payzum-for-tutor-lms' ),
 					),
 					'value'   => 'test',
 				),
 				array(
 					'name'  => 'api_key',
 					'type'  => 'secret_key',
-					'label' => __( 'API key', 'payzum-tutor-lms' ),
+					'label' => __( 'API key', 'payzum-for-tutor-lms' ),
 					'value' => '',
 				),
 				array(
 					'name'  => 'webhook_secret',
 					'type'  => 'secret_key',
-					'label' => __( 'Webhook secret', 'payzum-tutor-lms' ),
+					'label' => __( 'Webhook secret', 'payzum-for-tutor-lms' ),
 					'value' => '',
 				),
 				array(
 					'name'  => 'pay_currency',
 					'type'  => 'text',
-					'label' => __( 'Pay currency ("all" lets the buyer choose; or e.g. "usdcmatic")', 'payzum-tutor-lms' ),
+					'label' => __( 'Pay currency ("all" lets the buyer choose; or e.g. "usdcmatic")', 'payzum-for-tutor-lms' ),
 					'value' => 'all',
 				),
 			),
