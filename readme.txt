@@ -2,7 +2,7 @@
 Contributors: payzum
 Tags: crypto, stablecoin, payments, tutor lms, usdc
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 8.1
 Stable tag: 1.0.0
 License: MIT
@@ -28,6 +28,20 @@ Subscription plans are not supported — crypto has no card on file to pull from
 3. Go to Tutor LMS → Settings → Payment Methods → Payzum, and paste your API key and webhook secret (from merchant.payzum.com).
 
 There is nothing to configure in the Payzum dashboard: the notification URL is sent with every invoice.
+
+== External services ==
+
+This plugin connects to the Payzum API to create payment invoices and receive payment
+notifications. It is required for the gateway to work.
+
+* What it sends: when a student checks out a course, the plugin sends the order total, currency, order id and your site's callback/return URLs to Payzum to create the invoice.
+  Payment confirmations arrive as signed webhooks from Payzum; the plugin verifies their
+  signature before crediting the payment. No customer personal data is sent by the plugin.
+* When: only when the gateway is enabled and a student pays for a course (or the site owner tests the
+  connection from the settings screen).
+* Endpoints: `https://merchant.payzum.com` (production) or `https://staging.payzum.com`
+  (staging), as selected in the plugin settings.
+* Service provider: Payzum — [terms](https://payzum.com/terms), [privacy](https://payzum.com/privacy).
 
 == Changelog ==
 
