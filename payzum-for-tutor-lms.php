@@ -3,7 +3,7 @@
  * Plugin Name: Payzum for Tutor LMS
  * Plugin URI: https://github.com/payzum-dev/tutor-lms-payzum
  * Description: Accept crypto & stablecoin payments (USDC, USDT and more, multi-chain) for Tutor LMS course orders through Payzum — non-custodial, funds settle directly to your own wallet.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 6.2
  * Requires PHP: 8.1
  * Requires Plugins: tutor
