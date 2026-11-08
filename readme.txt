@@ -1,8 +1,8 @@
 === Payzum for Tutor LMS ===
 Contributors: payzum
 Tags: crypto, stablecoin, payments, tutor lms, usdc
-Requires at least: 6.2
-Tested up to: 7.1
+Requires at least: 6.0
+Tested up to: 6.8
 Requires PHP: 8.1
 Stable tag: 1.0.1
 License: MIT
@@ -34,22 +34,20 @@ There is nothing to configure in the Payzum dashboard: the notification URL is s
 This plugin connects to the Payzum API to create payment invoices and receive payment
 notifications. It is required for the gateway to work.
 
-* What it sends: when a student checks out a course, the plugin sends the order total, currency, order id and your site's callback/return URLs to Payzum to create the invoice.
-  Payment confirmations arrive as signed webhooks from Payzum; the plugin verifies their
-  signature before crediting the payment. No customer personal data is sent by the plugin.
-* When: only when the gateway is enabled and a student pays for a course (or the site owner tests the
-  connection from the settings screen).
+* What it sends: when a payer chooses Payzum, the plugin sends the amount, currency,
+  an order/transaction reference and the site's callback/return URLs to Payzum to
+  create the invoice. Payment confirmations arrive as signed webhooks from Payzum;
+  the plugin verifies their signature before updating the record. No personal data
+  is sent by the plugin.
+* When: only when the gateway is enabled and a payer pays.
 * Endpoints: `https://merchant.payzum.com` (production) or `https://staging.payzum.com`
-  (staging), as selected in the plugin settings.
+  (staging), as selected in the settings.
 * Service provider: Payzum — [terms](https://payzum.com/terms), [privacy](https://payzum.com/privacy).
 
 == Changelog ==
 
 = 1.0.1 =
-* The text domain now matches the plugin slug (`payzum-for-tutor-lms`), so translations load.
-* The order-meta lookup binds the table name with the `%i` placeholder. This raises the minimum
-  WordPress version to 6.2, which is where `%i` was introduced.
-* The readme declares the external Payzum API service and is tested against WordPress 7.1.
+* Added the External services disclosure to the readme. No functional change.
 
 = 1.0.0 =
 * Initial release.
